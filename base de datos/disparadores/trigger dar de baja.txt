@@ -1,0 +1,8 @@
+CREATE OR REPLACE TRIGGER trg_baja_admin
+AFTER UPDATE ON administrador FOR EACH ROW 
+WHEN estado_u = FALSE
+BEGIN
+
+UPDATE usuario SET estado_u = FALSE WHERE administrador.id_usuario = usuario.id_usuario;
+
+END trg_baja_admin;
